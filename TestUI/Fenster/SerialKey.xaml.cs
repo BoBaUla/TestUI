@@ -24,6 +24,7 @@ namespace TestUI.Fenster
         public SerialKey()
         {
             InitializeComponent();
+            calenderDate.SelectedDate = DateTime.Today;
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
@@ -73,6 +74,12 @@ namespace TestUI.Fenster
                 e.Handled = !(uint.TryParse(((TextBox)sender).Text, out temp));
             if (temp != 0)
                 e.Handled = temp + val > 0xFFFF;
+        }
+
+        private void tbSerial_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Translation trans = new Translation();
+            e.Handled = !(trans.DICT.Contains(e.Text) && ((TextBox)sender).Text.Count() < 16);
         }
     }
 }
