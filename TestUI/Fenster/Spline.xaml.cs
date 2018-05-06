@@ -1,4 +1,5 @@
 ﻿using MyMath;
+using MyMath.SplineCondition;
 using MyMath.Typen;
 using OxyPlot;
 using OxyPlot.Series;
@@ -36,7 +37,7 @@ namespace TestUI.Fenster
                 //ser.Points.Add(new DataPoint(i, _interpol.GetValue(i)));
                 ser.Points.Add(new DataPoint(i, (i)));
             ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Add(ser);
-            
+            rbNatural.IsChecked = true;
 
         }
 
@@ -61,20 +62,9 @@ namespace TestUI.Fenster
             _DataPoints.Sort();
 
             _interpol.AddValue(new TDataPoint(x, y));
-            
             if (_interpol.Count > 1)
             {
-                _interpol.Interpolate();
-                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Clear();
-                LineSeries ser = new LineSeries();
-                for (int i = 0; i < _interpol.Count * 10; i++)
-                {
-                    double val = _interpol.GetValue(ValueOnGrid(i, _interpol.Count * 10));
-                    DataPoint data = new DataPoint(ValueOnGrid(i, _interpol.Count * 10), val);
-                    ser.Points.Add(data);
-                }
-                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Add(ser);
-                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.InvalidatePlot(true);
+                Interpolate();
             }
             else
             {
@@ -88,8 +78,10 @@ namespace TestUI.Fenster
             lvDataPoints.Items.Clear();
             foreach (DataPointViewModel data in _DataPoints)
             {
-               lvDataPoints.Items.Add(data);
+                lvDataPoints.Items.Add(data);
             }
+
+
         }
         
         private void btnClearValues_Click(object sender, RoutedEventArgs e)
@@ -106,6 +98,47 @@ namespace TestUI.Fenster
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void rb_Checked(object sender, RoutedEventArgs e)
+        {
+            if(((RadioButton)sender).Name == "rbNatural")
+                _interpol = new Interpolation();
+            else if (((RadioButton)sender).Name == "rbClamped1")
+                _interpol = new Interpolation(new ClampedSpline(),1,1);
+            else if (((RadioButton)sender).Name == "rbClamped2")
+                _interpol = new Interpolation(new ClampedSpline(), 4, 4);
+            SetValues();
+        }
+
+        private void btnRedraw_Click(object sender, RoutedEventArgs e)
+        {
+            Interpolate();
+        }
+
+        private void Interpolate()
+        {
+           
+                _interpol.Interpolate();
+                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Clear();
+                LineSeries ser = new LineSeries();
+                for (int i = 0; i < _interpol.Count * 10; i++)
+                {
+                    double val = _interpol.GetValue(ValueOnGrid(i, _interpol.Count * 10));
+                    DataPoint data = new DataPoint(ValueOnGrid(i, _interpol.Count * 10), val);
+                    ser.Points.Add(data);
+                }
+               ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Add(ser);
+                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.InvalidatePlot(true);
+           
+        }
+
+        private void SetValues()
+        {
+            foreach(DataPointViewModel data in _DataPoints)
+            {
+                _interpol.AddValue(new TDataPoint(data.XValue, data.YValue));
+            }
         }
     }
 }

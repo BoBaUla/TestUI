@@ -18,11 +18,17 @@
         <Controls:Plotter x:Name ="CtrlPlotterSpline"  Height="450" Width="1266" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Button Name="btnClearValues"  Content="Clear" Margin="1304,450,0,0" Style="{DynamicResource ButtonStyle}" Click="btnClearValues_Click" RenderTransformOrigin="-2.227,1.719"/>
         <Button Name="btnClose"  Content="Close" Margin="1430,450,0,0" Style="{DynamicResource ButtonStyle}" Click="btnClose_Click"/>
+        <Button Name="btnRedraw"  Content="Draw" Margin="1430,190,0,0" Style="{DynamicResource ButtonStyle}" Click="btnRedraw_Click"/>
         <Controls:NewDataPoint x:Name="CtrlDataPoints" Margin="1304,20,9.6,393.6" />
-        <ListView Foreground="{DynamicResource FontBrush}" Name="lvDataPoints" HorizontalAlignment="Left" Height="324" Margin="1384,110,0,0" VerticalAlignment="Top" Background="{DynamicResource LayerTwoBrush}" Width="100">
-            
-        </ListView>
+        <ListView Foreground="{DynamicResource FontBrush}" Name="lvDataPoints" HorizontalAlignment="Left" Height="245" Margin="1304,184,0,0" VerticalAlignment="Top" Background="{DynamicResource LayerTwoBrush}" Width="100">
 
+        </ListView>
+        <Canvas Name="CVRadioButtons" Margin="1304,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <RadioButton Name="rbNatural"  Foreground="{DynamicResource FontBrush}" Content="Natural Spline" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Checked="rb_Checked" />
+            <RadioButton Name="rbClamped1" Foreground="{DynamicResource FontBrush}" Content="Clamped Spline (1,1)" HorizontalAlignment="Left" Margin="0,20,0,0" VerticalAlignment="Top" Checked="rb_Checked"/>
+            <RadioButton Name="rbClamped2" Foreground="{DynamicResource FontBrush}" Content="Clamped Spline (2,2)" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Checked="rb_Checked" />
+        </Canvas>
+        
 
     </Grid>
 </Window>
