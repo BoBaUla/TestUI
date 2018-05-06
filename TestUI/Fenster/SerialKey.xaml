@@ -14,7 +14,7 @@
             <Label Name="lblEncrypted"  Content="Product ID:" Foreground="#cfcfcf"  Margin="5,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
             <TextBox Name="tbProductID" IsEnabled="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" Canvas.Left="90" Canvas.Top="35" PreviewTextInput="tbProductID_PreviewTextInput"/>
             <Label Name="lblDecrypted" Content="Customer ID:" Foreground="#cfcfcf"  VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="5" Canvas.Top="63" />
-            <TextBox Name="tbCustomerID" IsEnabled="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" Canvas.Left="90" Canvas.Top="63" PreviewTextInput="tbCustomerID_PreviewTextInput"/>
+            <TextBox Name="tbCustomerID" IsEnabled="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="221" Canvas.Left="90" Canvas.Top="63" PreviewTextInput="tbProductID_PreviewTextInput"/>
             </Canvas>
         <Canvas Background="{DynamicResource LayerTwoBrush}" Name="cvSerial" Height="40" Width="500" Margin="10,230,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <TextBox Name="tbSerial" IsEnabled="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="400" Canvas.Left="90" Canvas.Top="10" PreviewTextInput="tbSerial_PreviewTextInput"/>

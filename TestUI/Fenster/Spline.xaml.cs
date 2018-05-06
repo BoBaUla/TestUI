@@ -1,4 +1,6 @@
-﻿using OxyPlot;
+﻿using MyMath;
+using MyMath.Typen;
+using OxyPlot;
 using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
@@ -22,24 +24,78 @@ namespace TestUI.Fenster
     /// </summary>
     public partial class Spline : Window
     {
+        Interpolation _interpol = new Interpolation();
+        List<DataPointViewModel> _DataPoints = new List<DataPointViewModel>();
         public Spline()
         {
             InitializeComponent();
-            LineSeries ser = new LineSeries(); 
-            for (int i = 0; i < 20; i++)
-                ser.Points.Add(new DataPoint(i, Math.Sqrt(i)));
+            
+            CtrlDataPoints.ValueAddedHandler += CtrlDataPoints_ValueAddedHandler;
+            LineSeries ser = new LineSeries();
+            for (int i = 0; i < 50; i++)
+                //ser.Points.Add(new DataPoint(i, _interpol.GetValue(i)));
+                ser.Points.Add(new DataPoint(i, (i)));
+            ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Add(ser);
+            
 
-            ((PlotterViewModel)PlotterSpline.DataContext).MyModel.Series.Add(ser);
         }
 
-        private void btnAddValues_Click(object sender, RoutedEventArgs e)
+        public double ValueOnGrid(int iValue, int gridWidth)
         {
-
+            return _interpol.Xmin + (_interpol.Xmax - _interpol.Xmin) / gridWidth * iValue;
         }
 
+        private void CtrlDataPoints_ValueAddedHandler(double x, double y)
+        {
+            DataPointViewModel dataPoint = new DataPointViewModel() { XValue = x, YValue = y };
+            var xList = from xValue in _DataPoints select xValue.XValue;
+            if (xList.Contains(dataPoint.XValue))
+            {
+                MessageBox.Show("You already entered a value for this position");
+                return;
+            }
+
+            
+
+            _DataPoints.Add(dataPoint);
+            _DataPoints.Sort();
+
+            _interpol.AddValue(new TDataPoint(x, y));
+            
+            if (_interpol.Count > 1)
+            {
+                _interpol.Interpolate();
+                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Clear();
+                LineSeries ser = new LineSeries();
+                for (int i = 0; i < _interpol.Count * 10; i++)
+                {
+                    double val = _interpol.GetValue(ValueOnGrid(i, _interpol.Count * 10));
+                    DataPoint data = new DataPoint(ValueOnGrid(i, _interpol.Count * 10), val);
+                    ser.Points.Add(data);
+                }
+                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Add(ser);
+                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.InvalidatePlot(true);
+            }
+            else
+            {
+                LineSeries ser = new LineSeries();
+                ser.Points.Add(new DataPoint(0, 0));
+                ser.Points.Add(new DataPoint(x, y));
+                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Add(ser);
+                ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.InvalidatePlot(true);
+            }
+
+            lvDataPoints.Items.Clear();
+            foreach (DataPointViewModel data in _DataPoints)
+            {
+               lvDataPoints.Items.Add(data);
+            }
+        }
+        
         private void btnClearValues_Click(object sender, RoutedEventArgs e)
         {
-            ((PlotterViewModel)PlotterSpline.DataContext).MyModel.Series.Clear();
+            ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.Series.Clear();
+            ((PlotterViewModel)CtrlPlotterSpline.DataContext).MyModel.InvalidatePlot(true);
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)

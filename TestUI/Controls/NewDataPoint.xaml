@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="TestUI.Controls.NewDataPoint"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestUI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="45" 
+             d:DesignWidth="180"
+             MinHeight="80"
+             MinWidth="180"
+             Background="{DynamicResource LayerTwoBrush}">
+    <Grid>
+        <Label Name="lblX" Content="X:" Foreground="{DynamicResource FontBrush}" Margin="10,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.464,1.09"  />
+        <Label Name="lblY" Content="Y:" Foreground="{DynamicResource FontBrush}" Margin="0,6,60,0" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.409,-0.24"  />
+        <TextBox Name="tbXValue"  Margin="30,6,0,0" Width="50" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" PreviewTextInput="TextInput_PreviewTextInput" TextChanged="tbValue_TextChanged"/>
+        <TextBox Name="tbYValue"  Margin="0,6,10,0" Width="50" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" PreviewTextInput="TextInput_PreviewTextInput" TextChanged="tbValue_TextChanged" RenderTransformOrigin="0.508,0.5"/>
+        <Button Name="btnAdd" Style="{DynamicResource ButtonStyle}" IsEnabled="False" Content="Add" HorizontalAlignment="Right" Width="40" Margin="0,45,10,0" Click="btnAdd_Click" />
+    </Grid>
+</UserControl>

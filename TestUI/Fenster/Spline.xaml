@@ -15,9 +15,14 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         >
     <Grid>
-        <Controls:Plotter x:Name ="PlotterSpline"  Height="450" Width="1300" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <Button Name="btnAddValues"  Content="Add" Margin="1340,410,0,0" Style="{DynamicResource ButtonStyle}" Click="btnAddValues_Click"/>
-        <Button Name="btnClearValues"  Content="Clear" Margin="1430,410,0,0" Style="{DynamicResource ButtonStyle}" Click="btnClearValues_Click"/>
+        <Controls:Plotter x:Name ="CtrlPlotterSpline"  Height="450" Width="1266" Margin="20,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button Name="btnClearValues"  Content="Clear" Margin="1304,450,0,0" Style="{DynamicResource ButtonStyle}" Click="btnClearValues_Click" RenderTransformOrigin="-2.227,1.719"/>
         <Button Name="btnClose"  Content="Close" Margin="1430,450,0,0" Style="{DynamicResource ButtonStyle}" Click="btnClose_Click"/>
+        <Controls:NewDataPoint x:Name="CtrlDataPoints" Margin="1304,20,9.6,393.6" />
+        <ListView Foreground="{DynamicResource FontBrush}" Name="lvDataPoints" HorizontalAlignment="Left" Height="324" Margin="1384,110,0,0" VerticalAlignment="Top" Background="{DynamicResource LayerTwoBrush}" Width="100">
+            
+        </ListView>
+
+
     </Grid>
 </Window>

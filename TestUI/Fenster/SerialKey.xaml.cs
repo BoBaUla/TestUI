@@ -65,21 +65,12 @@ namespace TestUI.Fenster
                 e.Handled = temp + val > 0xFFFF;
         }
 
-        private void tbCustomerID_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            uint val = 0;
-            e.Handled = !(uint.TryParse(e.Text, out val));
-            uint temp = 0;
-            if (!string.IsNullOrWhiteSpace(((TextBox)sender).Text))
-                e.Handled = !(uint.TryParse(((TextBox)sender).Text, out temp));
-            if (temp != 0)
-                e.Handled = temp + val > 0xFFFF;
-        }
-
         private void tbSerial_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Translation trans = new Translation();
             e.Handled = !(trans.DICT.Contains(e.Text) && ((TextBox)sender).Text.Count() < 16);
         }
+
+
     }
 }

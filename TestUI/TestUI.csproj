@@ -37,6 +37,9 @@
     <Reference Include="KryptoAlg">
       <HintPath>..\KryptoAlg\bin\Debug\netstandard2.0\KryptoAlg.dll</HintPath>
     </Reference>
+    <Reference Include="MyMath">
+      <HintPath>..\..\MyMath\MyMath\bin\Debug\MyMath.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="OxyPlot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Core.1.0.0\lib\net45\OxyPlot.dll</HintPath>
@@ -64,6 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\NewDataPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Plotter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +94,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\DataPointViewModel.cs" />
+    <Compile Include="Controls\NewDataPoint.xaml.cs">
+      <DependentUpon>NewDataPoint.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Plotter.xaml.cs">
       <DependentUpon>Plotter.xaml</DependentUpon>

@@ -133,7 +133,6 @@ E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\TestUI.exe
 E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\TestUI.pdb
 E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\OxyPlot.dll
 E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\OxyPlot.Wpf.dll
-E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\KryptoAlg.pdb
 E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\OxyPlot.pdb
 E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\OxyPlot.xml
 E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\OxyPlot.Wpf.pdb
@@ -160,3 +159,9 @@ E:\VisualStudio\Projekte\TestUI\TestUI\obj\Debug\TestUI.csproj.GenerateResource.
 E:\VisualStudio\Projekte\TestUI\TestUI\obj\Debug\TestUI.csproj.CoreCompileInputs.cache
 E:\VisualStudio\Projekte\TestUI\TestUI\obj\Debug\TestUI.exe
 E:\VisualStudio\Projekte\TestUI\TestUI\obj\Debug\TestUI.pdb
+E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\MyMath.dll
+E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\Mathematik.dll
+E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\MyMath.pdb
+E:\VisualStudio\Projekte\TestUI\TestUI\bin\Debug\Mathematik.pdb
+E:\VisualStudio\Projekte\TestUI\TestUI\obj\Debug\Controls\NewDataPoint.g.cs
+E:\VisualStudio\Projekte\TestUI\TestUI\obj\Debug\Controls\NewDataPoint.baml

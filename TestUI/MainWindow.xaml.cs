@@ -47,10 +47,10 @@ namespace TestUI
 
         private void btnSpline_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("In Process");
+            //MessageBox.Show("In Process");
 
-            //Spline spline = new Spline();
-            //spline.ShowDialog();
+            Spline spline = new Spline();
+            spline.ShowDialog();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
